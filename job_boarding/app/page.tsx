@@ -25,9 +25,9 @@ interface Job {
   description: string; 
   likes: number;       
 }
-
-// const API_URL = "http://localhost:8001";
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8001";
+// 
+const API_URL = "http://localhost:8001";
+// const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8001";
 
 export default function Home() {
   const [token, setToken] = useState<string | null>(null);
@@ -181,7 +181,7 @@ export default function Home() {
                 <ProfileWindow
                   token={token}
                   onSave={(updatedProfile) => {
-                    toast.success("Vector configuration profile updated successfully!");
+                    // toast.success("Vector configuration profile updated successfully!");
                     console.log("Vector payload mapped successfully: ", updatedProfile);
                   }}
                 />

@@ -22,13 +22,13 @@ interface ContactAndSocialsProps {
 
 const defaultIdentity: IdentityProfileData = {
   fullName: "John Doe",
-  email: "john.doe@vectorpipeline.io",
+  email: "john.doe@unploy.com",
   phone: "+1 (555) 019-2834",
   location: "San Francisco, CA",
   professionalHeadline: "Full Stack Engineer | React, Node.js, Go | 5+ Years Exp",
-  portfolioUrl: "https://johndoe.dev",
-  githubUrl: "https://github.com/johndoe",
-  websiteUrl: "https://vectorpipeline.io"
+  portfolioUrl: "https://Unlop@gmail.com",
+  githubUrl: "https://github.com/Unploy",
+  websiteUrl: "https://Unploy@gmail.com"
 };
 
 export default function ContactAndSocials({ initialData = defaultIdentity, onSave }: ContactAndSocialsProps) {

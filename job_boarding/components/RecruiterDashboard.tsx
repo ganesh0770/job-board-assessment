@@ -1,9 +1,11 @@
 "use client";
+
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Briefcase, Users, Plus, FileText, CheckCircle, X } from 'lucide-react';
+
 const API_URL = "http://localhost:8001";
-// Explicit type definitions converted to valid TypeScript interfaces
+
 export interface Job {
   id: string;
   title: string;
@@ -42,13 +44,13 @@ export default function RecruiterDashboard({ token, jobsCount, applications, onJ
     location: 'Hitech City, Hyderabad (Onsite)',
     salary: '',
     type: 'Full-time',
-    tags: ''
+    tags: '',
+    description: '' // Added target parameter tracking fields
   });
 
   const handleJobSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // const res = await );
       const res = await fetch(`${API_URL}/api/jobs/create`, {
         method: "POST",
         headers: {
@@ -61,7 +63,8 @@ export default function RecruiterDashboard({ token, jobsCount, applications, onJ
           location: newJob.location,
           salary: newJob.salary,
           type: newJob.type,
-          tags: newJob.tags.split(",").map(t => t.trim()).filter(t => t !== "")
+          tags: newJob.tags.split(",").map(t => t.trim()).filter(t => t !== ""),
+          description: newJob.description || "No description provided."
         })
       });
 
@@ -71,19 +74,18 @@ export default function RecruiterDashboard({ token, jobsCount, applications, onJ
       toast.success("Job listed across global indexes successfully!");
       setIsPostJobModalOpen(false);
 
-      // Reset State
       setNewJob({
         title: '',
         company: 'Globalco Ltd',
         location: 'Hitech City, Hyderabad (Onsite)',
         salary: '',
         type: 'Full-time',
-        tags: ''
+        tags: '',
+        description: ''
       });
 
       onJobPosted();
-    }
-    catch (err: unknown) {
+    } catch (err: unknown) {
       if (err instanceof Error) {
         toast.error(err.message);
       } else {
@@ -93,18 +95,18 @@ export default function RecruiterDashboard({ token, jobsCount, applications, onJ
   };
 
   return (
-    <div className="space-y-8 ">
+    <div className="space-y-8 p-1">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="p-4 bg-slate-950/40 border border-white/5 rounded-xl flex items-center justify-between">
           <div>
-            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Active Index Pipelines</span>
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Active Indexed JOb</span>
             <div className="text-xl font-bold text-white mt-1">{jobsCount} Jobs</div>
           </div>
           <div className="p-2.5 bg-indigo-600/10 text-indigo-400 rounded-lg"><Briefcase className="h-4 w-4" /></div>
         </div>
         <div className="p-4 bg-slate-950/40 border border-white/5 rounded-xl flex items-center justify-between">
           <div>
-            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Indexed Applications</span>
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">No. of Applications</span>
             <div className="text-xl font-bold text-white mt-1">{applications.length} Candidates</div>
           </div>
           <div className="p-2.5 bg-emerald-600/10 text-emerald-400 rounded-lg"><Users className="h-4 w-4" /></div>
@@ -114,7 +116,7 @@ export default function RecruiterDashboard({ token, jobsCount, applications, onJ
           className="p-4 bg-indigo-600 hover:bg-indigo-500 rounded-xl transition-all shadow-md group flex items-center justify-between text-left"
         >
           <div>
-            <span className="text-[10px] text-indigo-200 font-bold uppercase tracking-wider">Workspace Actions</span>
+            <span className="text-[10px] text-indigo-200 font-bold uppercase tracking-wider">click here to </span>
             <div className="text-sm font-bold text-white mt-1 flex items-center gap-1">
               Post New Vacancy <Plus className="h-3.5 w-3.5 group-hover:scale-125 transition-transform" />
             </div>
@@ -138,9 +140,9 @@ export default function RecruiterDashboard({ token, jobsCount, applications, onJ
               <div key={app.id} className="p-5 bg-slate-950/40 rounded-xl border border-white/5 space-y-3.5">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <span className="text-[10px] font-mono text-slate-500 uppercase">{app.id}</span>
-                    <h4 className="text-xs font-bold text-white mt-0.5 animate-pulse">
-                      Target: <span className="text-indigo-400">{app.jobTitle}</span>
+                    <span className="text-[10px] font-mono text-slate-500 uppercase">App Reference ID: #{app.id}</span>
+                    <h4 className="text-xs font-bold text-white mt-0.5">
+                      Target Role: <span className="text-indigo-400">{app.jobTitle}</span>
                     </h4>
                   </div>
                   <div className="flex items-center gap-4">
@@ -154,8 +156,7 @@ export default function RecruiterDashboard({ token, jobsCount, applications, onJ
                   </div>
                 </div>
                 <div className="p-3 bg-slate-950 border border-white/5 rounded-lg text-xs text-slate-400 leading-relaxed">
-                  {/* Option A: Safely wrapped in a JSX template literal expression */}
-                  {`"${app.coverLetter}"`}
+                  "{app.coverLetter}"
                 </div>
                 {app.status === 'Pending' && (
                   <div className="flex items-center gap-2 justify-end">
@@ -220,6 +221,10 @@ export default function RecruiterDashboard({ token, jobsCount, applications, onJ
               <div>
                 <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Capabilities (Comma-Separated)</label>
                 <input type="text" placeholder="React, Python, FastAPI" className="w-full bg-slate-950 border border-white/10 p-2.5 rounded-xl text-xs text-white" value={newJob.tags} onChange={e => setNewJob({ ...newJob, tags: e.target.value })} />
+              </div>
+              <div>
+                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Role Description</label>
+                <textarea required rows={3} placeholder="Enter full description details..." className="w-full bg-slate-950 border border-white/10 focus:border-indigo-500 outline-none p-2.5 rounded-xl text-xs text-white resize-none" value={newJob.description} onChange={e => setNewJob({ ...newJob, description: e.target.value })} />
               </div>
               <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold p-2.5 rounded-xl text-xs transition shadow-md">Deploy Job Posting Pipeline</button>
             </form>

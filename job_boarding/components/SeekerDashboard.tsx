@@ -1,6 +1,14 @@
 
-
 "use client";
+// import { User, CircleUser, Image } from 'lucide-react';
+//  {/* Standard generic user profile icon */}
+//       <User size={32} color="#333" strokeWidth={2} />
+
+//       {/* Circle user profile icon (great for clean UI avatars) */}
+//       <CircleUser size={32} color="#0070f3" />
+
+//       {/* Placeholder image icon if you want a picture placeholder instead */}
+//       <Image size={32} color="#666" />
 
 import React, { useState, useEffect, useMemo } from 'react';
 import {
@@ -48,8 +56,8 @@ export default function SeekerDashboard({ Job_see = [], token, API_URL = "http:/
 
   // Profile Options Config Management Panel States
   const [profileForm, setProfileForm] = useState({
-    fullName: "John Doe",
-    email: "john.doe@vectorpipeline.io",
+    fullName: "Name",
+    email: "john.doe@example.io",
     visibility: "Public index match alignment",
     salaryExpectation: "140,000"
   });
@@ -339,7 +347,7 @@ export default function SeekerDashboard({ Job_see = [], token, API_URL = "http:/
                         </div>
                       ) : (
                         <button onClick={() => setIsModalOpen(true)} className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-xs border border-indigo-500 flex items-center gap-1.5 shadow-md shadow-indigo-600/10 active:scale-[0.98] transition-all">
-                          Route Pipeline Application <ExternalLink className="h-3.5 w-3.5" />
+                          Apply <ExternalLink className="h-3.5 w-3.5" />
                         </button>
                       )}
                     </div>
@@ -373,7 +381,7 @@ export default function SeekerDashboard({ Job_see = [], token, API_URL = "http:/
               </div>
               <div className="flex items-center justify-end gap-2 text-xs font-bold">
                 <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 border border-slate-200 dark:border-slate-800 bg-transparent rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800">Cancel</button>
-                <button type="submit" disabled={isSubmitting} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white flex items-center gap-1.5 shadow-md shadow-indigo-600/15 disabled:opacity-50 transition-colors">{isSubmitting ? "Processing..." : "Dispatched App"} <Send className="h-3 w-3" /></button>
+                <button type="submit" disabled={isSubmitting} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white flex items-center gap-1.5 shadow-md shadow-indigo-600/15 disabled:opacity-50 transition-colors">{isSubmitting ? "Processing..." : "Send"} <Send className="h-3 w-3" /></button>
               </div>
             </form>
           </div>

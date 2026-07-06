@@ -87,7 +87,7 @@ export default function ProfileWindow({ token, onSave }: ProfileWindowProps) {
 
   const syncStateToBackend = async () => {
     setIsUpdating(true);
-    const tid = toast.loading("Syncing structural datasets to database stream...");
+    // const tid = toast.loading("Syncing structural datasets to database stream...");
     try {
       const response = await fetch(API_URL, {
         method: "POST",
@@ -99,7 +99,7 @@ export default function ProfileWindow({ token, onSave }: ProfileWindowProps) {
       });
       if (!response.ok) throw new Error();
       
-      toast.success("Database sync written successfully!", { id: tid });
+      toast.success("Database sync written successfully!");
       if (onSave) onSave(profile);
     } catch {
       toast.error("Failed to compile state updates down to engine.", { id: tid });
@@ -184,7 +184,7 @@ export default function ProfileWindow({ token, onSave }: ProfileWindowProps) {
           {/* TAB 1: PROFESSIONAL IDENTITY */}
           {activeTab === 'identity' && (
             <div className="space-y-5">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white">Professional Identity & History Layout</h3>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white">Professional Identity </h3>
               <div>
                 <label className="text-slate-400 block mb-1">Headline Search Engine Optimization Summary</label>
                 <textarea value={profile.identity.headline} onChange={e => setProfile(p => ({ ...p, identity: { ...p.identity, headline: e.target.value } }))} rows={2} className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent text-slate-900 dark:text-slate-100 outline-none font-medium" />

@@ -1,5 +1,13 @@
 "use client";
+import {  CircleUser, Image } from 'lucide-react';
+//  {/* Standard generic user profile icon */}
+//       <User size={32} color="#333" strokeWidth={2} />
 
+//       {/* Circle user profile icon (great for clean UI avatars) */}
+//       <CircleUser size={32} color="#0070f3" />
+
+//       {/* Placeholder image icon if you want a picture placeholder instead */}
+//       <Image size={32} color="#666" />
 import React, { useState, useEffect, useRef } from 'react';
 import {
   Briefcase,
@@ -103,7 +111,7 @@ export default function Navbar({
                 <button
                   key={tab.id}
                   onClick={() => setCurrentView(tab.id as DashboardView)}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all relative ${isActive
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold  relative ${isActive
                       ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-950'
                       : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white'
                     }`}
@@ -168,14 +176,15 @@ export default function Navbar({
                 onClick={() => { setShowProfileMenu(!showProfileMenu); setShowNotifications(false); setShowThemeSubmenu(false); }}
                 className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl transition-all"
               >
-                <div className="h-7 w-7 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-xs">JD</div>
+                <CircleUser/>
+                {/* <div className="h-7 w-7 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-xs"><CircleUser/>JD</div> */}
               </button>
 
               {showProfileMenu && (
                 <div className="absolute right-0 mt-2 w-64 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 shadow-xl z-50">
                   <div className="p-2 border-b border-slate-100 dark:border-slate-800 mb-2">
-                    <p className="text-xs font-bold text-slate-900 dark:text-white">John Doe</p>
-                    <p className="text-[11px] text-slate-400 truncate">john.doe@vectorpipeline.io</p>
+                    <p className="text-xs font-bold text-slate-900 dark:text-white">name</p>
+                    <p className="text-[11px] text-slate-400 truncate">john.doe@example.io</p>
                   </div>
                   
                   <div className="space-y-0.5 text-xs">
