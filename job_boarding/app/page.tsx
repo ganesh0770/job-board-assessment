@@ -27,7 +27,7 @@ interface Job {
 }
 // 
 // const API_URL = "http://localhost:8001";
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8001";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
 
 export default function Home() {
   const [token, setToken] = useState<string | null>(null);
