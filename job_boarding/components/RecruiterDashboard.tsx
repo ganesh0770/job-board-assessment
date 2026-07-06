@@ -155,9 +155,9 @@ export default function RecruiterDashboard({ token, jobsCount, applications, onJ
                     </span>
                   </div>
                 </div>
-                <div className="p-3 bg-slate-950 border border-white/5 rounded-lg text-xs text-slate-400 leading-relaxed">
-                  "{app.coverLetter}"
-                </div>
+           <div className="p-3 bg-slate-950 border border-white/5 rounded-lg text-xs text-slate-400 leading-relaxed whitespace-pre-wrap">
+  {app.coverLetter}
+</div>
                 {app.status === 'Pending' && (
                   <div className="flex items-center gap-2 justify-end">
                     <button
