@@ -11,16 +11,10 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  // FIXED: Start safe with 'system' to prevent Next.js build-time crashes
-  const [theme, setThemeState] = useState<Theme>('system');
-
-  // FIXED: Fetch from localStorage ONLY after the component mounts on the client
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
-      setThemeState(savedTheme);
-    }
-  }, []);
+  // Grab initial theme from localStorage, default to 'system'
+  const [theme, setThemeState] = useState<Theme>(() => {
+    return (localStorage.getItem('theme') as Theme) || 'system';
+  });
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
@@ -28,9 +22,6 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    // A quick check to ensure we are in a browser environment
-    if (typeof window === 'undefined') return;
-
     const root = window.document.documentElement;
 
     const applyTheme = () => {
@@ -44,10 +35,12 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       }
     };
 
+    // Run initially
     applyTheme();
 
     if (theme !== 'system') return;
 
+    // Listen globally for OS theme alterations
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleSystemChange = () => applyTheme();
 
@@ -62,6 +55,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+// Custom hook for clean usage in components
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (!context) throw new Error('useTheme must be used within a ThemeProvider');

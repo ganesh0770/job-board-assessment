@@ -137,7 +137,7 @@ const activeJob = useMemo(() => {
   }, [filteredJobs, currentView, savedJobIds, appliedJobIds]);
 
   return (
-    <div className=" min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200 rounded-lg mt-[-6] ">
+    <div className=" top-20 relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200 rounded-lg mt-[-6] max-w-7xl  ">
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 h-[calc(100vh-4rem)] ">
         

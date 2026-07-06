@@ -9,7 +9,6 @@ from fastapi import FastAPI, UploadFile, File, HTTPException, status, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel, EmailStr
-from pypdf import PdfReader
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlalchemy import create_engine, Column, Integer, String
@@ -18,11 +17,17 @@ from sqlalchemy.orm import declarative_base, sessionmaker, Session
 # ------------------------------------------------------------------
 # 1. CORE APPS & APPLICATION GLOBAL PARAMETERS
 # ------------------------------------------------------------------
-app = FastAPI(title="Job Board AI Backend", version="1.0.0")
+app = FastAPI()
 
+origins = [
+    "http://localhost:3000",
+    "http://localhost:8001",
+    "https://job-board-assessment-one.vercel.app",
+    "https://job-board-assessment-git-main-ganesh0770s-projects.vercel.app",
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -32,6 +32,8 @@ interface Job {
 
 const API_URL = "http://localhost:8001";
 
+// NEXT_PUBLIC_API_URL=https://your-api.onrender.com
+
 export default function Home() {
   const [token, setToken] = useState<string | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null); // 'seeker' or 'recruiter'
