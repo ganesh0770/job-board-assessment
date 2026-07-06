@@ -1,19 +1,24 @@
 # Job Board Platform
 
+A high-performance, full-stack Job Board platform designed with a strong emphasis on user experience (UX) and intuitive feature flows. Built using a modern Next.js frontend and an agile FastAPI backend, the system leverages AI-assisted development practices alongside an automated GitHub Actions CI/CD pipeline for instant production deployment to Vercel.
 Live Demo & Repository
 
-    Live Deployment Link: [Insert your Vercel URL here]
 
-    GitHub Repository: [Insert your GitHub Repository URL here]
 
-Intuitive Application Workflow: A clean, multi-step or single-click application modal designed to minimize user friction.
+    Live Deployment Link: https://job-board-assessment-one.vercel.app/
 
-Employer Dashboard: A dedicated space for recruiters to post new openings, manage listings, and view applicant counts.
 
-Responsive & Accessible Design: Fully optimized for mobile, tablet, and desktop viewports, adhering to modern accessibility guidelines.
 
-Dark/Light Mode: A smooth toggle for visual comfort, matching modern web standards.
+--->  Intuitive Application Workflow: A clean, multi-step or single-click application modal designed to minimize user friction.
 
+--->  Employer Dashboard: A dedicated space for recruiters to post new openings, manage listings, and view applicant counts.
+
+--->  Responsive & Accessible Design: Fully optimized for mobile, tablet, and desktop viewports, adhering to modern accessibility guidelines.
+
+--->  Dark/Light Mode: A smooth toggle for visual comfort, matching modern web standards.
+
+
+## Tech stacks
 
 
 1. Frontend Framework: Next.js / React (or insert your chosen framework, e.g., Vue, Vite)
