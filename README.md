@@ -16,13 +16,13 @@ Dark/Light Mode: A smooth toggle for visual comfort, matching modern web standar
 
 
 
-Frontend Framework: Next.js / React (or insert your chosen framework, e.g., Vue, Vite)
+1. Frontend Framework: Next.js / React (or insert your chosen framework, e.g., Vue, Vite)
 
-Styling: Tailwind CSS (for rapid, responsive UI development)
+2. Styling: Tailwind CSS (for rapid, responsive UI development)
 
-CI/CD Pipeline: GitHub Actions
+3. CI/CD Pipeline: GitHub Actions
 
-Hosting & Deployment: Verce
+4. Hosting & Deployment: Verce
 
 ---
 
