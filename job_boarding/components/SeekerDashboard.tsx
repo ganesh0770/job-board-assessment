@@ -1,14 +1,6 @@
 
 "use client";
-// import { User, CircleUser, Image } from 'lucide-react';
-//  {/* Standard generic user profile icon */}
-//       <User size={32} color="#333" strokeWidth={2} />
 
-//       {/* Circle user profile icon (great for clean UI avatars) */}
-//       <CircleUser size={32} color="#0070f3" />
-
-//       {/* Placeholder image icon if you want a picture placeholder instead */}
-//       <Image size={32} color="#666" />
 
 import React, { useState, useEffect, useMemo } from 'react';
 import {
