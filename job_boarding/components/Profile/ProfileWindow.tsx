@@ -102,7 +102,7 @@ export default function ProfileWindow({ token, onSave }: ProfileWindowProps) {
       toast.success("Database sync written successfully!");
       if (onSave) onSave(profile);
     } catch {
-      toast.error("Failed to compile state updates down to engine.", { id: tid });
+      toast.error("Failed to compile state updates down to engine.");
     } finally {
       setIsUpdating(false);
     }
