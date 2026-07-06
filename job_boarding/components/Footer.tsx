@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,10 +14,10 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-start gap-2">
           <div className="flex items-center gap-2 group cursor-pointer select-none">
             <div className="h-6 w-6 bg-gradient-to-tr from-indigo-500 to-violet-500 rounded-lg flex items-center justify-center shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
-              <Sparkles className="h-3 w-3 text-white" />
+              <Briefcase className="h-3 w-3 text-white" />
             </div>
             <span className="font-bold text-sm tracking-tight text-white">
-              TalentPulse
+              Unploy
             </span>
           </div>
           <p className="text-xs text-slate-500">
