@@ -331,9 +331,6 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
     token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
     return {"access_token": token, "token_type": "bearer", "role": db_user.role}
 
-
-    return results
-
 @app.post("/api/jobs/create", response_model=JobResponse, status_code=status.HTTP_201_CREATED)
 def post_job(job: JobCreate, current_user: dict = Depends(decode_token), db: Session = Depends(get_db)):
     if current_user["role"] != "recruiter":

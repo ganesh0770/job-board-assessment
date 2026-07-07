@@ -29,6 +29,7 @@ interface Job {
 // const API_URL = "http://localhost:8001";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
 
+
 export default function Home() {
   const [token, setToken] = useState<string | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null); // 'seeker' or 'recruiter'
